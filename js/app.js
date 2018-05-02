@@ -2,6 +2,17 @@
  * Create a list that holds all of your cards
  */
 
+ const cardsList = [
+     'fa-diamnd', 
+     'fa-paper-plane-o', 
+     'fa-bolt', 
+     'fa-cube', 
+     'fa-anchor', 
+     'fa-leaf', 
+     'fa-bicycle', 
+     'fa-bomb'
+];
+
 
 /*
  * Display the cards on the page
