@@ -55,7 +55,7 @@ function reloadCards() {
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].setAttribute('class', 'fa');
     }
-    
+
     let newCards = shuffle(cardsList);
 
     for (let i = 0; i < cardIcon.length; i++) {
@@ -76,8 +76,11 @@ reloadCards();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ // Refresh button listener
 restart.addEventListener('click', reloadCards);
 
+// Card click listener
 deck.addEventListener('click', function(event) {
-    event.target.classList.toggle('show');
+    event.target.classList.add('show');
+    event.target.classList.add('open');
 });
