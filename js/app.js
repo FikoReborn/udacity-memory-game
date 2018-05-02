@@ -26,6 +26,7 @@
 const deck = document.querySelector('.deck');
 const card = deck.querySelector('.card');
 const cardIcon = deck.querySelectorAll('.fa'); 
+console.log(cardIcon[0]);
 
 /*
  * Display the cards on the page
@@ -48,6 +49,13 @@ function shuffle(array) {
 
     return array;
 }
+
+let newCards = shuffle(cardsList);
+
+for (let i = 0; i < cardIcon.length; i++) {
+    cardIcon[i].classList.add(newCards[i]);
+}
+
 
 
 /*
