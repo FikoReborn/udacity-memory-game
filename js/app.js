@@ -3,16 +3,29 @@
  */
 
  const cardsList = [
-     'fa-diamnd', 
-     'fa-paper-plane-o', 
+     'fa-diamond', 
+     'fa-diamond',
+     'fa-paper-plane-o',
+     'fa-paper-plane-o',
      'fa-bolt', 
+     'fa-bolt',
      'fa-cube', 
+     'fa-cube',
+     'fa-anchor', 
      'fa-anchor', 
      'fa-leaf', 
-     'fa-bicycle', 
+     'fa-leaf',
+     'fa-bicycle',
+     'fa-bicycle',
+     'fa-bomb', 
      'fa-bomb'
 ];
 
+// Element selector variables
+
+const deck = document.querySelector('.deck');
+const card = deck.querySelector('.card');
+const cardIcon = deck.querySelectorAll('.fa'); 
 
 /*
  * Display the cards on the page
@@ -47,8 +60,6 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
-var deck = document.querySelector('.deck');
 
 deck.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
