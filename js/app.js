@@ -26,6 +26,7 @@
 const deck = document.querySelector('.deck');
 const card = deck.querySelector('.card');
 const cardIcon = deck.querySelectorAll('.fa'); 
+const restart = document.querySelector('.restart');
 console.log(cardIcon[0]);
 
 /*
@@ -50,13 +51,19 @@ function shuffle(array) {
     return array;
 }
 
-let newCards = shuffle(cardsList);
+function reloadCards() {
+    for (let i = 0; i < cardIcon.length; i++) {
+        cardIcon[i].setAttribute('class', 'fa');
+    }
+    
+    let newCards = shuffle(cardsList);
 
-for (let i = 0; i < cardIcon.length; i++) {
-    cardIcon[i].classList.add(newCards[i]);
+    for (let i = 0; i < cardIcon.length; i++) {
+        cardIcon[i].classList.add(newCards[i]);
+    }
 }
 
-
+reloadCards();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -68,6 +75,8 @@ for (let i = 0; i < cardIcon.length; i++) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+restart.addEventListener('click', reloadCards);
 
 deck.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
