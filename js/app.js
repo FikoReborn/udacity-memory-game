@@ -106,7 +106,7 @@ restart.addEventListener('click', reloadCards);
 
 // Card click listener
 deck.addEventListener('click', function(event) {
-    if (event.target.classList[0] === "card" && event.target.classList[3] !== 'match') {
+    if (event.target.classList[0] === "card" && event.target.classList[1] !== 'show') {
         displayCard();
         addCardToList();
         if (cardShown.length%2 == 0) {
