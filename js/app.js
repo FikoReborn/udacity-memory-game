@@ -54,6 +54,7 @@ function shuffle(array) {
 function reloadCards() {
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].setAttribute('class', 'fa');
+        cardIcon[i].parentElement.classList.remove('match', 'open', 'show');
     }
 
     let newCards = shuffle(cardsList);
