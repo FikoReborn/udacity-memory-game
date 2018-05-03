@@ -27,7 +27,6 @@ const deck = document.querySelector('.deck');
 const card = deck.querySelector('.card');
 const cardIcon = deck.querySelectorAll('.fa'); 
 const restart = document.querySelector('.restart');
-console.log(cardIcon[0]);
 
 /*
  * Display the cards on the page
@@ -64,6 +63,29 @@ function reloadCards() {
     }
 }
 
+function displayCard() {
+    return event.target.classList.add('show','open');
+}
+
+function addCardToList() {
+    return cardShown.push(event.target.firstElementChild.classList[1]);
+}
+
+function matchingCards() {
+    const firstCard = document.querySelectorAll('.' + event.target.firstElementChild.classList[1])[0].parentElement;
+    const secondCard = document.querySelectorAll('.' + event.target.firstElementChild.classList[1])[1].parentElement;
+    firstCard.classList.add('match');
+    secondCard.classList.add('match');
+}
+
+function notMatchingCards() {
+    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[0].parentElement.classList = 'card';
+    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[1].parentElement.classList = 'card';
+    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[0].parentElement.classList = 'card';
+    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[1].parentElement.classList = 'card';
+    cardShown.splice(cardShown.length-2, 2);
+}
+
 reloadCards();
 
 /*
@@ -77,32 +99,21 @@ reloadCards();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- let cardShown = [];
+let cardShown = [];
 
  // Refresh button listener
 restart.addEventListener('click', reloadCards);
 
 // Card click listener
 deck.addEventListener('click', function(event) {
-    console.log(event.target.classList[0]);
     if (event.target.classList[0] === "card" && event.target.classList[3] !== 'match') {
-        const cardChildClass = event.target.firstElementChild.classList[1];
-        const firstCard = document.querySelectorAll('.' + cardChildClass)[0].parentElement;
-        const secondCard = document.querySelectorAll('.' + cardChildClass)[1].parentElement;
-        event.target.classList.add('show','open');
-        cardShown.push(cardChildClass);
+        displayCard();
+        addCardToList();
         if (cardShown.length%2 == 0) {
-            if(cardChildClass == cardShown[cardShown.length -1] && cardChildClass == cardShown[cardShown.length - 2]) {
-                firstCard.classList.add('match');
-                secondCard.classList.add('match');
+            if(event.target.firstElementChild.classList[1] == cardShown[cardShown.length -1] && event.target.firstElementChild.classList[1] == cardShown[cardShown.length - 2]) {
+                matchingCards();
             } else {
-                window.setTimeout(function() {
-                    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[0].parentElement.classList = 'card';
-                    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[1].parentElement.classList = 'card';
-                    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[0].parentElement.classList = 'card';
-                    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[1].parentElement.classList = 'card';
-                    cardShown.splice(cardShown.length-2, 2);           
-                }, 500);
+                notMatchingCards();
             }
         }
     }
