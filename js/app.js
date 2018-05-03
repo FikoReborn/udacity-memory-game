@@ -91,6 +91,10 @@ function incrementMove() {
     document.querySelector('.moves').textContent = moves;    
 }
 
+function gameOver() {
+    alert("You won!!");
+}
+
 reloadCards();
 
 /*
@@ -123,5 +127,8 @@ deck.addEventListener('click', function(event) {
             }
         }
         incrementMove();
+        if (cardShown.length === cardsList.length) {
+            gameOver();
+        }
     }
 });
