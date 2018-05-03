@@ -64,11 +64,11 @@ function reloadCards() {
 }
 
 function displayCard() {
-    return event.target.classList.add('show','open');
+    event.target.classList.add('show','open');
 }
 
 function addCardToList() {
-    return cardShown.push(event.target.firstElementChild.classList[1]);
+    cardShown.push(event.target.firstElementChild.classList[1]);
 }
 
 function matchingCards() {
@@ -86,6 +86,11 @@ function notMatchingCards() {
     cardShown.splice(cardShown.length-2, 2);
 }
 
+function incrementMove() {
+    moves += 1;
+    document.querySelector('.moves').textContent = moves;    
+}
+
 reloadCards();
 
 /*
@@ -100,6 +105,7 @@ reloadCards();
  */
 
 let cardShown = [];
+let moves = 0;
 
  // Refresh button listener
 restart.addEventListener('click', reloadCards);
@@ -116,5 +122,6 @@ deck.addEventListener('click', function(event) {
                 notMatchingCards();
             }
         }
+        incrementMove();
     }
 });
