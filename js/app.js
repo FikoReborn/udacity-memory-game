@@ -79,10 +79,10 @@ function matchingCards() {
 }
 
 function notMatchingCards() {
-    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[0].parentElement.classList = 'card';
-    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[1].parentElement.classList = 'card';
-    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[0].parentElement.classList = 'card';
-    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[1].parentElement.classList = 'card';
+    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[1].parentElement.classList.remove('open', 'show');
+    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[0].parentElement.classList.remove('open', 'show');
+    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[1].parentElement.classList.remove('open', 'show');
+    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[0].parentElement.classList.remove('open', 'show');
     cardShown.splice(cardShown.length-2, 2);
 }
 
