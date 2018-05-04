@@ -82,13 +82,15 @@ function matchingCards() {
 }
 
 function notMatchingCards() {
-    const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement.classList;
-    const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement.classList;
+    const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement;
+    const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement;
     cardShown.splice(cardShown.length-2, 2);
+    cardOne.classList.add('unmatch');
+    cardTwo.classList.add('unmatch');
     window.setTimeout(function() {
-        cardOne.remove('open', 'show');
-        cardTwo.remove('open', 'show');
-    }, 500);
+        cardOne.classList.remove('show','open','unmatch');
+        cardTwo.classList.remove('show','open','unmatch');
+    }, 1000);
 }
 
 function incrementMove() {
