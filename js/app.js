@@ -68,22 +68,23 @@ function displayCard() {
 }
 
 function addCardToList() {
-    cardShown.push(event.target.firstElementChild.classList[1]);
+    console.log(event.target.firstElementChild.id);
+    cardShown.push(event.target.firstElementChild.id);
 }
 
 function matchingCards() {
-    const firstCard = document.querySelectorAll('.' + event.target.firstElementChild.classList[1])[0].parentElement;
-    const secondCard = document.querySelectorAll('.' + event.target.firstElementChild.classList[1])[1].parentElement;
+    const firstCard = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement;
+    const secondCard = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement;
     firstCard.classList.add('match');
     secondCard.classList.add('match');
 }
 
 function notMatchingCards() {
-    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[1].parentElement.classList.remove('open', 'show');
-    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[0].parentElement.classList.remove('open', 'show');
-    document.querySelectorAll('.' + cardShown[cardShown.length - 2])[1].parentElement.classList.remove('open', 'show');
-    document.querySelectorAll('.' + cardShown[cardShown.length - 1])[0].parentElement.classList.remove('open', 'show');
+    const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]);
+    const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]);
     cardShown.splice(cardShown.length-2, 2);
+    cardOne.parentElement.classList.remove('open', 'show');
+    cardTwo.parentElement.classList.remove('open', 'show');
 }
 
 function incrementMove() {
@@ -120,7 +121,7 @@ deck.addEventListener('click', function(event) {
         displayCard();
         addCardToList();
         if (cardShown.length%2 == 0) {
-            if(event.target.firstElementChild.classList[1] == cardShown[cardShown.length -1] && event.target.firstElementChild.classList[1] == cardShown[cardShown.length - 2]) {
+            if(event.target.firstElementChild.classList[1] === document.querySelector('#' + cardShown[cardShown.length -1]).classList[1] && event.target.firstElementChild.classList[1] === document.querySelector('#' + cardShown[cardShown.length -2]).classList[1]) {
                 matchingCards();
             } else {
                 notMatchingCards();
