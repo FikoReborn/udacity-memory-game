@@ -61,6 +61,8 @@ function reloadCards() {
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].classList.add(newCards[i]);
     }
+    moves = 0;
+    document.querySelector('.moves').textContent = moves;
 }
 
 function displayCard() {
@@ -98,8 +100,6 @@ function gameOver() {
     alert("You won!!");
 }
 
-reloadCards();
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -113,6 +113,8 @@ reloadCards();
 
 let cardShown = [];
 let moves = 0;
+
+reloadCards();
 
  // Refresh button listener
 restart.addEventListener('click', reloadCards);
