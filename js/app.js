@@ -80,11 +80,13 @@ function matchingCards() {
 }
 
 function notMatchingCards() {
-    const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]);
-    const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]);
+    const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement.classList;
+    const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement.classList;
     cardShown.splice(cardShown.length-2, 2);
-    cardOne.parentElement.classList.remove('open', 'show');
-    cardTwo.parentElement.classList.remove('open', 'show');
+    window.setTimeout(function() {
+        cardOne.remove('open', 'show');
+        cardTwo.remove('open', 'show');
+    }, 500);
 }
 
 function incrementMove() {
