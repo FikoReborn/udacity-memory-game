@@ -29,7 +29,7 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Black Ops One', cursive;
     font-weight: 300;
 }
 
@@ -141,6 +141,7 @@ h1 {
      top: 50%;
      transform: translate(-50%,-50%);
      text-align: center;
+     font-family: 'Concert One', cursive;;
  }
 
  .play-again {
@@ -150,6 +151,7 @@ h1 {
     font-size: 1.5em;
     box-shadow: 3px 3px 5px black;
     padding: 10px;
+    font-family: 'VT323', monospace;
  }
 
  .play-again:focus {
