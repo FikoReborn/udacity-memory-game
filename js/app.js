@@ -101,8 +101,11 @@ function incrementMove() {
 
 function gameOver() {
     let winner = document.createElement('div');
-    winner.innerHTML = '<div class="game-over-text"><h2>Congratulations!!! You won!</h2>' +
-                    '<button class="play-again">Play Again?</button></div>';
+    winner.innerHTML = `<div class="game-over-text score-panel">
+                            <h2>Congratulations!!! You won!</h2>
+                            <p class="final-score">Score:</p><ul class="stars">${calculateScore()}</ul>
+                            <button class="play-again">Play Again?</button>
+                        </div>`;
     winner.classList = 'game-over';
     winner.classList.add('game-over');
     document.body.appendChild(winner);

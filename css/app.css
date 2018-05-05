@@ -152,6 +152,9 @@ h1 {
     box-shadow: 3px 3px 5px black;
     padding: 10px;
     font-family: 'VT323', monospace;
+    display: block;
+    clear: both;
+    margin-top: 60px;
  }
 
  .play-again:focus {
@@ -160,4 +163,8 @@ h1 {
 
  .play-again:active {
      box-shadow: none;
+ }
+
+ .final-score {
+     float: left;
  }
