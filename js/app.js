@@ -99,7 +99,19 @@ function incrementMove() {
 }
 
 function gameOver() {
-    alert("You won!!");
+    let winner = document.createElement('div');
+    winner.innerHTML = '<div class="game-over-text"><h2>Congratulations!!! You won!</h2>' +
+                    '<button class="play-again">Play Again?</button></div>';
+    winner.classList = 'game-over';
+    winner.classList.add('game-over');
+    document.body.appendChild(winner);
+    window.setTimeout(function(){
+        document.querySelector('.game-over').classList.add('fade-in');
+    }, 100);
+    document.querySelector('.play-again').addEventListener('click', function() {
+        document.querySelector('.game-over').remove();
+        reloadCards();
+    });
 }
 
 /*
