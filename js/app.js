@@ -63,6 +63,7 @@ function reloadCards() {
     }
     moves = 0;
     document.querySelector('.moves').textContent = moves;
+    document.querySelector('.stars').innerHTML = calculateScore();
 }
 
 function displayCard() {
@@ -114,6 +115,21 @@ function gameOver() {
     });
 }
 
+function calculateScore() {
+    scoreHTML = '';
+    if (moves >= 20 && moves < 50) {
+        score = 2;
+    } else if (moves >= 50) {
+        score = 1;
+    } else {
+        score = 3;
+    }
+    for (let i = 1; i <= score; i++) {
+        scoreHTML += starHTML;
+    }
+    return scoreHTML;
+}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -127,6 +143,9 @@ function gameOver() {
 
 let cardShown = [];
 let moves = 0;
+let score = 3;
+let scoreHTML = '';
+const starHTML = '<li><i class="fa fa-star"></i></li>';
 
 reloadCards();
 
@@ -149,5 +168,6 @@ deck.addEventListener('click', function(event) {
         if (cardShown.length === cardsList.length) {
             gameOver();
         }
+        document.querySelector('.stars').innerHTML = calculateScore();
     }
 });
