@@ -3,29 +3,29 @@
  */
 
  const cardsList = [
-     'fa-diamond', 
-     'fa-diamond',
-     'fa-paper-plane-o',
-     'fa-paper-plane-o',
-     'fa-bolt', 
-     'fa-bolt',
-     'fa-cube', 
-     'fa-cube',
-     'fa-anchor', 
-     'fa-anchor', 
-     'fa-leaf', 
-     'fa-leaf',
-     'fa-bicycle',
-     'fa-bicycle',
-     'fa-bomb', 
-     'fa-bomb'
+     'swg-xwing', 
+     'swg-xwing',
+     'swg-atat',
+     'swg-atat',
+     'swg-tie', 
+     'swg-tie',
+     'swg-reball', 
+     'swg-reball',
+     'swg-r2d2-3', 
+     'swg-r2d2-3', 
+     'swg-darthvader', 
+     'swg-darthvader',
+     'swg-stormtrooper',
+     'swg-stormtrooper',
+     'swg-deathstar', 
+     'swg-deathstar'
 ];
 
 // Element selector variables
 
 const deck = document.querySelector('.deck');
 const card = deck.querySelector('.card');
-const cardIcon = deck.querySelectorAll('.fa'); 
+const cardIcon = deck.querySelectorAll('.swg'); 
 const restart = document.querySelector('.restart');
 
 /*
@@ -52,7 +52,7 @@ function shuffle(array) {
 
 function reloadCards() {
     for (let i = 0; i < cardIcon.length; i++) {
-        cardIcon[i].setAttribute('class', 'fa');
+        cardIcon[i].setAttribute('class', 'swg');
         cardIcon[i].parentElement.classList.remove('match', 'open', 'show');
     }
 
