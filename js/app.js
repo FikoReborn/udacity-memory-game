@@ -86,19 +86,19 @@ function addCardToList() {
 function matchingCards() {
     const firstCard = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement;
     const secondCard = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement;
-    firstCard.classList.add('match');
-    secondCard.classList.add('match');
+    firstCard.classList.add('match', 'animated', 'rubberBand');
+    secondCard.classList.add('match', 'animated', 'rubberBand');
 }
 
 function notMatchingCards() {
     const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement;
     const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement;
     cardShown.splice(cardShown.length-2, 2);
-    cardOne.classList.add('unmatch');
-    cardTwo.classList.add('unmatch');
+    cardOne.classList.add('unmatch', 'animated', 'wobble');
+    cardTwo.classList.add('unmatch', 'animated', 'wobble');
     window.setTimeout(function() {
-        cardOne.classList.remove('show','open','unmatch');
-        cardTwo.classList.remove('show','open','unmatch');
+        cardOne.classList.remove('show','open','unmatch', 'animated', 'wobble');
+        cardTwo.classList.remove('show','open','unmatch', 'animated', 'wobble');
     }, 1000);
 }
 
