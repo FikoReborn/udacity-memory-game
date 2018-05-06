@@ -191,13 +191,6 @@ let timer = setInterval(gameTimer, 1000);
 let scoreHTML = '';
 const starHTML = '<li><i class="fa fa-star"></i></li>';
 
-// Create Starfield background
-// See https://github.com/dwmkerr/starfield
-var container = document.getElementById('starfield');
-var starfield = new Starfield();
-starfield.initialise(container);
-starfield.start();
-
 reloadCards();
 
  // Refresh button listener
