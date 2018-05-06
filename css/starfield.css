@@ -2,18 +2,22 @@
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
+
 @-webkit-keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
+
 @-moz-keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
+
 @-ms-keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
+
 .starbg, .twinkling {
   position:absolute;
   top:0;
@@ -24,10 +28,12 @@
   height:100%;
   display:block;
 }
+
 .starbg {
   background:#000 url(../img/stars.png) repeat top center;
   z-index:-1;
 }
+
 .twinkling{
   background:transparent url(../img/twinkling.png) repeat top center;
   z-index:1;

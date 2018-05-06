@@ -110,9 +110,9 @@ function incrementMove() {
 function gameOver() {
     clearInterval(timer);
     let winner = document.createElement('div');
-    winner.innerHTML = `<div class="game-over-text score-panel">
+    winner.innerHTML = `<div class="game-over-text">
                             <h2>Congratulations!!! You won!</h2>
-                            <div class="final-stats">
+                            <div class="final-stats score-panel">
                                 <p class="final-score">Score:</p>
                                     <ul class="stars">
                                         ${calculateScore()}
@@ -124,11 +124,8 @@ function gameOver() {
                             <button class="play-again">Play Again?</button>
                         </div>`;
     winner.classList = 'game-over';
-    winner.classList.add('game-over');
     document.body.appendChild(winner);
-    window.setTimeout(function(){
-        document.querySelector('.game-over').classList.add('fade-in');
-    }, 100);
+    document.querySelector('.game-over-text').classList.add('animated', 'bounceInDown');
     document.querySelector('.play-again').addEventListener('click', function() {
         document.querySelector('.game-over').remove();
         reloadCards();
