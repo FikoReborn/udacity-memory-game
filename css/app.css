@@ -1,12 +1,11 @@
 /*
  * HTML styles
  */
-
 html {
     box-sizing: border-box;
     user-select: none;
-    position: relative;
-    min-height: 100%;
+    position: relative; /* This lets starfield background  */
+    min-height: 100%;   /* extend for the whole document   */
 }
 
 *,
@@ -26,6 +25,8 @@ body {
 }
 
 .container {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,15 +36,6 @@ body {
 h1 {
     font-family: 'Black Ops One', cursive;
     font-weight: 300;
-}
-
- /*
-  * Set z-index of container, so it is on top of the starfield
-  */
-
-.container {
-    position: relative;
-    z-index: 1;
 }
 
 /*

@@ -21,8 +21,22 @@
      'swg-deathstar'
 ];
 
-// Element selector variables
+// New variable to store cards clicked/matched
+let cardShown = [];
 
+// Timer variables
+let realSeconds = 0;
+let seconds = 0;
+let minutes = 0;
+let textSeconds = '';
+let textMinutes = '';
+let timer = setInterval(gameTimer, 1000);
+
+//  Variables to track moves/score
+let moves = 0;
+let score = 3;
+
+// Element selector variables
 const deck = document.querySelector('.deck');
 const card = deck.querySelector('.card');
 const cardIcon = deck.querySelectorAll('.swg'); 
@@ -51,14 +65,11 @@ function shuffle(array) {
 }
 
 function reloadCards() {
+    let newCards = shuffle(cardsList);
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].setAttribute('class', 'swg');
         cardIcon[i].parentElement.classList.remove('match', 'open', 'show');
     }
-
-    let newCards = shuffle(cardsList);
-    
-
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].classList.add(newCards[i]);
     }
@@ -75,12 +86,51 @@ function reloadCards() {
     document.querySelector('.stars').innerHTML = calculateScore();
 }
 
+function gameTimer() {
+    if (cardShown.length !== cardsList.length && moves !== 0) {
+        realSeconds += 1;
+    	if (realSeconds/60%1 === 0) {
+        	minutes += 1;
+            seconds = 0;
+        } else {
+        	seconds += 1;
+        }
+        textSeconds = seconds.toString();
+        if (seconds < 10) {
+            textSeconds = `0${textSeconds}`
+        }
+        document.querySelector('.minutes').textContent = minutes;
+        document.querySelector('.seconds').textContent = textSeconds;
+    }
+}
+
 function displayCard() {
     event.target.classList.add('show','open');
 }
 
 function addCardToList() {
     cardShown.push(event.target.firstElementChild.id);
+}
+
+function incrementMove() {
+    moves += 1;
+    document.querySelector('.moves').textContent = moves;    
+}
+
+function calculateScore() {
+    let scoreHTML = '';
+    const starHTML = '<li><i class="fa fa-star"></i></li>';
+    if (moves >= 20 && moves < 50) {
+        score = 2;
+    } else if (moves >= 50) {
+        score = 1;
+    } else {
+        score = 3;
+    }
+    for (let i = 1; i <= score; i++) {
+        scoreHTML += starHTML;
+    }
+    return scoreHTML;
 }
 
 function matchingCards() {
@@ -100,11 +150,6 @@ function notMatchingCards() {
         cardOne.classList.remove('show','open','unmatch', 'animated', 'wobble', 'blink');
         cardTwo.classList.remove('show','open','unmatch', 'animated', 'wobble', 'blink');
     }, 1000);
-}
-
-function incrementMove() {
-    moves += 1;
-    document.querySelector('.moves').textContent = moves;    
 }
 
 function gameOver() {
@@ -132,74 +177,23 @@ function gameOver() {
     });
 }
 
-function calculateScore() {
-    scoreHTML = '';
-    if (moves >= 20 && moves < 50) {
-        score = 2;
-    } else if (moves >= 50) {
-        score = 1;
-    } else {
-        score = 3;
-    }
-    for (let i = 1; i <= score; i++) {
-        scoreHTML += starHTML;
-    }
-    return scoreHTML;
-}
-
-function gameTimer() {
-    if (cardShown.length !== cardsList.length && moves !== 0) {
-        realSeconds += 1;
-    	if (realSeconds/60%1 === 0) {
-        	minutes += 1;
-            seconds = 0;
-        } else {
-        	seconds += 1;
-        }
-        textSeconds = seconds.toString();
-        if (seconds < 10) {
-            textSeconds = `0${textSeconds}`
-        }
-        document.querySelector('.minutes').textContent = minutes;
-        document.querySelector('.seconds').textContent = textSeconds;
-    }
-}
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
-let cardShown = [];
-let moves = 0;
-let score = 3;
-let realSeconds = 0;
-let seconds = 0;
-let textSeconds = '';
-let textMinutes = '';
-let minutes = 0;
-let timer = setInterval(gameTimer, 1000);
-let scoreHTML = '';
-const starHTML = '<li><i class="fa fa-star"></i></li>';
-
+// Shuffle and load cards on page load
 reloadCards();
 
- // Refresh button listener
+ // Add a click listener to the refresh button
 restart.addEventListener('click', reloadCards);
 
-// Card click listener
+// Add a listener to the game board
 deck.addEventListener('click', function(event) {
-    if (event.target.classList[0] === "card" && event.target.classList[1] !== 'show') {
+    const targetClass = event.target.classList;
+    const targetChildClass = event.target.firstElementChild.classList;
+    if (targetClass[0] === "card" && targetClass[1] !== 'show') {
         displayCard();
         addCardToList();
-        if (cardShown.length%2 == 0) {
-            if(event.target.firstElementChild.classList[1] === document.querySelector('#' + cardShown[cardShown.length -1]).classList[1] && event.target.firstElementChild.classList[1] === document.querySelector('#' + cardShown[cardShown.length -2]).classList[1]) {
+        if (cardShown.length%2 === 0) {
+            const firstClick = document.querySelector('#' + cardShown[cardShown.length - 1]).classList[1];
+            const secondClick = document.querySelector('#' + cardShown[cardShown.length - 2]).classList[1];
+            if(targetChildClass[1] === firstClick && targetChildClass[1] === secondClick) {
                 matchingCards();
             } else {
                 notMatchingCards();
@@ -210,8 +204,6 @@ deck.addEventListener('click', function(event) {
             gameOver();
         }
         document.querySelector('.stars').innerHTML = calculateScore();
-        if (moves == 1) {
-            timer;
-        }
+        timer;
     }
 });
