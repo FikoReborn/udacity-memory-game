@@ -57,11 +57,20 @@ function reloadCards() {
     }
 
     let newCards = shuffle(cardsList);
+    
 
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].classList.add(newCards[i]);
     }
     moves = 0;
+    realSeconds = 0;
+    seconds = 0;
+    minutes = 0;
+    cardShown = [];
+    clearInterval(timer);
+    timer = setInterval(gameTimer, 1000);
+    document.querySelector('.minutes').textContent = '0';
+    document.querySelector('.seconds').textContent = '00';
     document.querySelector('.moves').textContent = moves;
     document.querySelector('.stars').innerHTML = calculateScore();
 }
@@ -71,7 +80,6 @@ function displayCard() {
 }
 
 function addCardToList() {
-    console.log(event.target.firstElementChild.id);
     cardShown.push(event.target.firstElementChild.id);
 }
 
@@ -100,10 +108,19 @@ function incrementMove() {
 }
 
 function gameOver() {
+    clearInterval(timer);
     let winner = document.createElement('div');
     winner.innerHTML = `<div class="game-over-text score-panel">
                             <h2>Congratulations!!! You won!</h2>
-                            <p class="final-score">Score:</p><ul class="stars">${calculateScore()}</ul>
+                            <div class="final-stats">
+                                <p class="final-score">Score:</p>
+                                    <ul class="stars">
+                                        ${calculateScore()}
+                                    </ul>
+                                <div class="timer">
+                                    Time: <span class="minutes">${minutes}</span>:<span class="seconds">${textSeconds}</span>
+                                </div>
+                            </div>
                             <button class="play-again">Play Again?</button>
                         </div>`;
     winner.classList = 'game-over';
@@ -133,6 +150,24 @@ function calculateScore() {
     return scoreHTML;
 }
 
+function gameTimer() {
+    if (cardShown.length !== cardsList.length && moves !== 0) {
+        realSeconds += 1;
+    	if (realSeconds/60%1 === 0) {
+        	minutes += 1;
+            seconds = 0;
+        } else {
+        	seconds += 1;
+        }
+        textSeconds = seconds.toString();
+        if (seconds < 10) {
+            textSeconds = `0${textSeconds}`
+        }
+        document.querySelector('.minutes').textContent = minutes;
+        document.querySelector('.seconds').textContent = textSeconds;
+    }
+}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -147,6 +182,12 @@ function calculateScore() {
 let cardShown = [];
 let moves = 0;
 let score = 3;
+let realSeconds = 0;
+let seconds = 0;
+let textSeconds = '';
+let textMinutes = '';
+let minutes = 0;
+let timer = setInterval(gameTimer, 1000);
 let scoreHTML = '';
 const starHTML = '<li><i class="fa fa-star"></i></li>';
 
@@ -172,5 +213,8 @@ deck.addEventListener('click', function(event) {
             gameOver();
         }
         document.querySelector('.stars').innerHTML = calculateScore();
+        if (moves == 1) {
+            timer;
+        }
     }
 });

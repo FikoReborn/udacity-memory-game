@@ -141,7 +141,8 @@ h1 {
      top: 50%;
      transform: translate(-50%,-50%);
      text-align: center;
-     font-family: 'Concert One', cursive;;
+     font-family: 'Concert One', cursive;
+     margin: auto;
  }
 
  .play-again {
@@ -154,7 +155,7 @@ h1 {
     font-family: 'VT323', monospace;
     display: block;
     clear: both;
-    margin-top: 60px;
+    margin: 30px auto;
  }
 
  .play-again:focus {
@@ -166,5 +167,20 @@ h1 {
  }
 
  .final-score {
-     float: left;
+     display: inline;
+     margin: 0;
+ }
+
+ .final-stats {
+     margin: auto;
+ }
+
+ /*
+  * Timer
+  */
+
+ .timer {
+     text-align: center;
+     display: inline-block;
+     width: 50%;
  }
