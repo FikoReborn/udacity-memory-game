@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    user-select: none;
 }
 
 *,
@@ -53,7 +54,24 @@ h1 {
 
 .container {
     position: relative;
-    z-index: 5;
+    z-index: 1;
+}
+
+/*
+ * Heading styles
+ */
+.swg-starwars {
+    margin-top: -45px;
+    margin-bottom: -46px;
+    float: left;
+    margin-right: 30px;
+    font-size: 8em;
+}
+ 
+.head-text {
+    color: #000;
+    text-shadow: 2px 2px 5px #fff, -2px -2px 5px #fff, 2px -2px 5px #fff, -2px 2px 5px #fff;
+    font-size: 1.5em;
 }
 
 /*
@@ -63,9 +81,10 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background-color: rgb(189, 189, 189);
+    border: 5px solid #a30f0f;
     padding: 32px;
-    border-radius: 10px;
+    border-radius: 70px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
@@ -90,7 +109,8 @@ h1 {
 
 .deck .card.open {
     transform: rotateY(360deg);
-    background: #02b3e4;
+    background: #fff;
+    color: #000;
     cursor: default;
     transition: 0.3s ease;
 }
@@ -101,13 +121,14 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #8ae4ff;
+    color: #000 !important;
     font-size: 55px;
 }
 
 .deck .card.unmatch {
     cursor: default;
-    background-color: red !important;
+    background-color: #ff0000;
     font-size: 55px;
 }
 

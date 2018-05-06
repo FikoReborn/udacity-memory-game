@@ -94,11 +94,11 @@ function notMatchingCards() {
     const cardOne = document.querySelector('#' + cardShown[cardShown.length-1]).parentElement;
     const cardTwo = document.querySelector('#' + cardShown[cardShown.length-2]).parentElement;
     cardShown.splice(cardShown.length-2, 2);
-    cardOne.classList.add('unmatch', 'animated', 'wobble');
-    cardTwo.classList.add('unmatch', 'animated', 'wobble');
+    cardOne.classList.add('unmatch', 'animated', 'wobble', 'blink');
+    cardTwo.classList.add('unmatch', 'animated', 'wobble', 'blink');
     window.setTimeout(function() {
-        cardOne.classList.remove('show','open','unmatch', 'animated', 'wobble');
-        cardTwo.classList.remove('show','open','unmatch', 'animated', 'wobble');
+        cardOne.classList.remove('show','open','unmatch', 'animated', 'wobble', 'blink');
+        cardTwo.classList.remove('show','open','unmatch', 'animated', 'wobble', 'blink');
     }, 1000);
 }
 
