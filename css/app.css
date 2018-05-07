@@ -110,7 +110,7 @@ h1 {
 
 .deck .card.unmatch {
     cursor: default;
-    background-color: #ff0000;
+    background-color: #f00;
     font-size: 55px;
 }
 

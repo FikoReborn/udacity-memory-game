@@ -159,19 +159,19 @@ function notMatchingCards() {
 function gameOver() {
     clearInterval(timer);
     let winner = document.createElement('div');
-    winner.innerHTML = `<div class="game-over-text">
-                            <h2>Congratulations!!! You won!</h2>
-                            <div class="final-stats score-panel">
-                                <p class="final-score">Score:</p>
-                                    <ul class="stars">
-                                        ${calculateScore()}
-                                    </ul>
-                                <div class="timer">
-                                    Time: <span class="minutes">${minutes}</span>:<span class="seconds">${textSeconds}</span>
-                                </div>
-                            </div>
-                            <button class="play-again">Play Again?</button>
-                        </div>`;
+    winner.innerHTML = '<div class="game-over-text">' +
+                            '<h2>Congratulations!!! You won!</h2>' +
+                            '<div class="final-stats score-panel">' +
+                                '<p class="final-score">Score:</p>' +
+                                    '<ul class="stars">' +
+                                        calculateScore() +
+                                    '</ul>' +
+                                '<div class="timer">' +
+                                    'Time: <span class="minutes">' + minutes + '</span>:<span class="seconds">' + textSeconds + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                            '<button class="play-again">Play Again?</button>' +
+                        '</div>';
     winner.classList = 'game-over';
     document.body.appendChild(winner);
     document.querySelector('.game-over-text').classList.add('animated', 'bounceInDown');
