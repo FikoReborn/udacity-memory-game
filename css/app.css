@@ -203,3 +203,37 @@ h1 {
      margin: auto;
      text-align: center;
  }
+
+
+/* Make app responsive */
+ @media screen and (max-width: 665px) {
+     /* Hide board background on mobile and small screens, and make game board responsive */
+    .deck {
+        width: 100%;
+        background: none;
+        border: 0;
+        box-shadow: none;
+    }
+
+    /* Give margin to cards at lower screen sizes */
+    .deck .card {
+        margin-bottom: 10px;
+    }
+
+    /* Make score panel responsive at lower screen sizes, add margin to sides */
+    .score-panel {
+        width: 100%;
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+
+    /* Change font-size and icon size for heading */
+    header {
+        font-size: 0.5em;
+        text-align: center;
+    }
+    
+    .swg-starwars {
+        margin-top: -25px;
+    }
+ }
