@@ -10,7 +10,7 @@
 
 Just a simple memory game with a Star Wars theme, this is a Udacity project for the Front-End Nanodegree Program. There are 8 pairs of cards, totalling 16. Match two cards together to keep them revealed. Match all 16 cards to win the game. Win with 20 moves or less for a 3-star rating. no more than 50 moves for 2-star. 1-star for anything more than that. 
 
-##Dependencies
+## Dependencies
 
 - **css/**
     - **app.css** - Styles for app
