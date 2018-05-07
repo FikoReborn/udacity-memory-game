@@ -68,7 +68,7 @@ function reloadCards() {
     let newCards = shuffle(cardsList);
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].setAttribute('class', 'swg');
-        cardIcon[i].parentElement.classList.remove('match', 'open', 'show');
+        cardIcon[i].parentElement.classList.remove('match', 'open', 'show', 'animated', 'rubberBand');
     }
     for (let i = 0; i < cardIcon.length; i++) {
         cardIcon[i].classList.add(newCards[i]);
