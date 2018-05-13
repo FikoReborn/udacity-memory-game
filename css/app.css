@@ -237,6 +237,8 @@ h1 {
 /* Break points for even smaller screens */
 @media screen and (max-width: 495px) {
     .deck .card {
+        position: relative;
+        top: -30px;
         width: 98px;
         height: 98px;
     }
