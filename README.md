@@ -6,6 +6,11 @@
 * [Dependencies](#dependencies)
 * [Contributing](#contributing)
 
+## How to Run this Game
+Clone to your machine and open index.html from the application directory.
+
+Or for a live version, just click [here](http://fikoreborn.github.io/udacity-memory-game) and the game will load up. 
+
 ## Instructions
 
 Just a simple memory game with a Star Wars theme, this is a Udacity project for the Front-End Nanodegree Program. There are 8 pairs of cards, totalling 16. Match two cards together to keep them revealed. Match all 16 cards to win the game. Win with 20 moves or less for a 3-star rating. no more than 50 moves for 2-star. 1-star for anything more than that. 
